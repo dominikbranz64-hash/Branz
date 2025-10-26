@@ -75,7 +75,10 @@
 
 <script>
   let code = '';
-  const correctCode = '2008';
+  const messages = {
+    '2008': 'Słodka jesteś, Oliwia 😍',
+    '1509': 'Masz piękne oczka 😘'
+  };
 
   function press(n) {
     const display = document.getElementById('display');
@@ -93,12 +96,11 @@
     display.textContent = '●'.repeat(code.length);
 
     if (code.length === 4) {
-      if (code === correctCode) {
-        message.textContent = 'Słodka jesteś, Oliwia 😍';
+      if (messages[code]) {
+        message.textContent = messages[code];
       } else {
         message.textContent = 'Niepoprawny kod 😢';
-        code = '';
-        setTimeout(() => { message.textContent = ''; display.textContent = ''; }, 1000);
+        setTimeout(() => { message.textContent = ''; display.textContent = ''; code = ''; }, 1000);
       }
     }
   }
