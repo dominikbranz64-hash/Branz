@@ -5,15 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lockscreen dla Oliwii</title>
 <style>
-  body {
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* brak przewijania */
     font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
+    align-items: center;
     background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
   }
+
   .screen {
     background: #fff;
     border-radius: 20px;
@@ -21,18 +24,22 @@
     text-align: center;
     width: 300px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    user-select: none; /* brak zaznaczania tekstu */
   }
+
   .display {
     font-size: 24px;
     letter-spacing: 10px;
     margin-bottom: 20px;
     min-height: 40px;
   }
+
   .buttons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
   }
+
   button {
     padding: 20px;
     font-size: 18px;
@@ -43,9 +50,11 @@
     cursor: pointer;
     transition: 0.2s;
   }
+
   button:hover {
     background: #ff4971;
   }
+
   .message {
     margin-top: 20px;
     font-size: 20px;
