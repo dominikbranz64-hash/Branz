@@ -48,7 +48,7 @@
   }
   .message {
     margin-top: 20px;
-    font-size: 22px;
+    font-size: 20px;
     color: #ff3c78;
   }
 </style>
@@ -77,7 +77,23 @@
   let code = '';
   const messages = {
     '2008': 'Słodka jesteś, Oliwia 😍',
-    '1509': 'Masz piękne oczka 😘'
+    '1509': 'Masz piękne oczka 😘',
+    '1234': 'Uwielbiam Twój uśmiech 😊',
+    '4321': 'Twoje włosy są cudowne 💖',
+    '1111': 'Jesteś wyjątkowa 🌟',
+    '2222': 'Kocham Twój głos 🎶',
+    '3333': 'Twoje oczy błyszczą ✨',
+    '4444': 'Jesteś najfajniejsza 😎',
+    '5555': 'Twoje serce jest piękne ❤️',
+    '6666': 'Masz świetne poczucie humoru 😂',
+    '7777': 'Jesteś moja inspiracja 🌸',
+    '8888': 'Uwielbiam spędzać z Tobą czas 🥰',
+    '9999': 'Twoja obecność mnie uszczęśliwia 😇',
+    '1010': 'Jesteś jak promień słońca ☀️',
+    '2020': 'Twoja energia jest zaraźliwa ⚡',
+    '3030': 'Jesteś kochana i wspaniała 💕',
+    '4040': 'Twoja osobowość jest niesamowita 🌈',
+    '5050': 'Nie mogę przestać o Tobie myśleć 😘'
   };
 
   function press(n) {
@@ -98,6 +114,7 @@
     if (code.length === 4) {
       if (messages[code]) {
         message.textContent = messages[code];
+        code = ''; // reset po poprawnym kodzie
       } else {
         message.textContent = 'Niepoprawny kod 😢';
         setTimeout(() => { message.textContent = ''; display.textContent = ''; code = ''; }, 1000);
