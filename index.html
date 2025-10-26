@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lockscreen dla Oliwii</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  }
+  .screen {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  .display {
+    font-size: 24px;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+    min-height: 40px;
+  }
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  button {
+    padding: 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    background: #ff6f91;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  button:hover {
+    background: #ff4971;
+  }
+  .message {
+    margin-top: 20px;
+    font-size: 22px;
+    color: #ff3c78;
+  }
+</style>
+</head>
+<body>
+<div class="screen">
+  <div class="display" id="display">●●●●</div>
+  <div class="buttons">
+    <button onclick="press(1)">1</button>
+    <button onclick="press(2)">2</button>
+    <button onclick="press(3)">3</button>
+    <button onclick="press(4)">4</button>
+    <button onclick="press(5)">5</button>
+    <button onclick="press(6)">6</button>
+    <button onclick="press(7)">7</button>
+    <button onclick="press(8)">8</button>
+    <button onclick="press(9)">9</button>
+    <button onclick="press('C')">C</button>
+    <button onclick="press(0)">0</button>
+    <button onclick="press('<')">←</button>
+  </div>
+  <div class="message" id="message"></div>
+</div>
+
+<script>
+  let code = '';
+  const correctCode = '2008';
+
+  function press(n) {
+    const display = document.getElementById('display');
+    const message = document.getElementById('message');
+
+    if (n === 'C') {
+      code = '';
+      message.textContent = '';
+    } else if (n === '<') {
+      code = code.slice(0, -1);
+    } else {
+      if (code.length < 4) code += n;
+    }
+
+    display.textContent = '●'.repeat(code.length);
+
+    if (code.length === 4) {
+      if (code === correctCode) {
+        message.textContent = 'Słodka jesteś, Oliwia 😍';
+      } else {
+        message.textContent = 'Niepoprawny kod 😢';
+        code = '';
+        setTimeout(() => { message.textContent = ''; display.textContent = ''; }, 1000);
+      }
+    }
+  }
+</script>
+</body>
+</html>
